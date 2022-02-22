@@ -13,6 +13,7 @@ require 'rails_helper'
 # sticking to rails and rspec-rails APIs to keep things simple and stable.
 
 RSpec.describe "/requirements", type: :request do
+  let(:current_user) { create(:user) }
   
   # This should return the minimal set of attributes required to create a valid
   # Requirement. As you add validations to Requirement, be sure to
@@ -27,7 +28,9 @@ RSpec.describe "/requirements", type: :request do
   let(:invalid_attributes) {{
     story: nil
   }}
-
+  before do
+    sign_in current_user
+  end
   describe "GET /index" do
     it "renders a successful response" do
       Requirement.create! valid_attributes

@@ -2,12 +2,8 @@ require 'rails_helper'
 
 RSpec.describe "projects/index", type: :view do
   let(:projects){ [
-    Project.create!(
-      title: "Title"
-    ),
-    Project.create!(
-      title: "Title"
-    )
+    create(:project),
+    create(:project),
   ]}
 
   before(:each) do
