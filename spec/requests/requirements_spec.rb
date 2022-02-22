@@ -20,7 +20,8 @@ RSpec.describe "/requirements", type: :request do
   let(:project) { FactoryBot.create(:project) }
   let(:valid_attributes) {{
     project_id: project.id,
-    story: "<b>Foo</b>bar"
+    story: "<b>Foo</b>bar",
+    description: 'foo'
   }}
 
   let(:invalid_attributes) {{
@@ -73,45 +74,45 @@ RSpec.describe "/requirements", type: :request do
     end
 
     context "with invalid parameters" do
-      xit "does not create a new Requirement" do
+      it "does not create a new Requirement" do
         expect {
-          post requirements_url, params: { requirement: invalid_attributes }
+          post project_requirements_url(project), params: { requirement: invalid_attributes }
         }.to change(Requirement, :count).by(0)
       end
 
-      xit "renders a successful response (i.e. to display the 'new' template)" do
+      it "renders a successful response (i.e. to display the 'new' template)" do
         post project_requirements_url(project), params: { requirement: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(422)
       end
     end
   end
 
   describe "PATCH /update" do
     context "with valid parameters" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
+      let(:new_attributes) {{
+        story: 'updated',
+        description: 'updated'
+      }}
 
       it "updates the requested requirement" do
         requirement = Requirement.create! valid_attributes
         patch requirement_url(requirement), params: { requirement: new_attributes }
         requirement.reload
-        skip("Add assertions for updated state")
       end
 
       it "redirects to the requirement" do
         requirement = Requirement.create! valid_attributes
         patch requirement_url(requirement), params: { requirement: new_attributes }
         requirement.reload
-        expect(response).to redirect_to(requirement_url(requirement))
+        expect(response).to redirect_to(project_requirements_url(project))
       end
     end
 
     context "with invalid parameters" do
-      xit "renders a successful response (i.e. to display the 'edit' template)" do
+      it "renders a successful response (i.e. to display the 'edit' template)" do
         requirement = Requirement.create! valid_attributes
         patch requirement_url(requirement), params: { requirement: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(422)
       end
     end
   end

@@ -3,9 +3,8 @@ require 'rails_helper'
 RSpec.describe "requirements/edit", type: :view do
   let(:project) { FactoryBot.create(:project) }
   before(:each) do
-    @requirement = assign(:requirement, Requirement.create!(
+    @requirement = assign(:requirement, create(:requirement,
       project: project,
-      story: 'foo'
     ))
   end
 

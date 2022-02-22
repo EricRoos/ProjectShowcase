@@ -57,6 +57,6 @@ class RequirementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def requirement_params
-      params.require(:requirement).permit(:story)
+      params.require(:requirement).permit(:story, :description)
     end
 end
