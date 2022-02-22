@@ -78,3 +78,5 @@ gem "devise", "~> 4.8"
 gem "faker", "~> 2.19", :groups => [:development, :test]
 
 gem "guard-rspec", "~> 4.7", :groups => [:test, :development]
+
+gem "capybara", "~> 3.36", :group => :test
