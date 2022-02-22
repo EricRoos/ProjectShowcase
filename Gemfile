@@ -68,3 +68,9 @@ end
 gem "rspec-rails", "~> 5.1", :group => :test
 
 gem "guard-rails", "~> 0.8.1", :groups => [:test, :development]
+
+gem "factory_bot_rails", "~> 6.2", :groups => [:development, :test]
+
+gem "devise", "~> 4.8"
+
+gem "faker", "~> 2.19", :groups => [:development, :test]
