@@ -80,3 +80,5 @@ gem "faker", "~> 2.19", :groups => [:development, :test]
 gem "guard-rspec", "~> 4.7", :groups => [:test, :development]
 
 gem "capybara", "~> 3.36", :group => :test
+
+gem "selenium-webdriver", "~> 4.1", :group => :test
