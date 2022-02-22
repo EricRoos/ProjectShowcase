@@ -1,13 +1,14 @@
 require "rails_helper"
 
 RSpec.describe RequirementsController, type: :routing do
+
   describe "routing" do
     it "routes to #index" do
-      expect(get: "/requirements").to route_to("requirements#index")
+      expect(get: "/projects/1/requirements").to route_to("requirements#index", project_id: '1')
     end
 
     it "routes to #new" do
-      expect(get: "/requirements/new").to route_to("requirements#new")
+      expect(get: "/projects/1/requirements/new").to route_to("requirements#new", project_id: '1')
     end
 
     it "routes to #show" do
@@ -20,7 +21,7 @@ RSpec.describe RequirementsController, type: :routing do
 
 
     it "routes to #create" do
-      expect(post: "/requirements").to route_to("requirements#create")
+      expect(post: "/projects/1/requirements").to route_to("requirements#create", project_id: '1')
     end
 
     it "routes to #update via PUT" do

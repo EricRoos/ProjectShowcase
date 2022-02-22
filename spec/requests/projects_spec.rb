@@ -17,13 +17,13 @@ RSpec.describe "/projects", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Project. As you add validations to Project, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes) {{
+    title: "foo"
+  }}
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) {{
+    title: ""
+  }}
 
   describe "GET /index" do
     it "renders a successful response" do
@@ -79,7 +79,7 @@ RSpec.describe "/projects", type: :request do
 
       it "renders a successful response (i.e. to display the 'new' template)" do
         post projects_url, params: { project: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(422)
       end
     end
   end
@@ -109,7 +109,7 @@ RSpec.describe "/projects", type: :request do
       it "renders a successful response (i.e. to display the 'edit' template)" do
         project = Project.create! valid_attributes
         patch project_url(project), params: { project: invalid_attributes }
-        expect(response).to be_successful
+        expect(response).to have_http_status(422)
       end
     end
   end

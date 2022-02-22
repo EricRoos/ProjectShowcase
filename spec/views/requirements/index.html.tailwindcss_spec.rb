@@ -7,6 +7,7 @@ RSpec.describe "requirements/index", type: :view do
     FactoryBot.create(:requirement, project: project),
   ]}
   before(:each) do
+    assign(:project, project)
     assign(:requirements, requirements)
   end
 

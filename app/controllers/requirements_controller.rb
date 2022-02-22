@@ -1,4 +1,5 @@
 class RequirementsController < ApplicationController
+  before_action :set_project, only: %i[ index create new ]
   before_action :set_requirement, only: %i[ show edit update destroy ]
 
   # GET /requirements
@@ -12,7 +13,7 @@ class RequirementsController < ApplicationController
 
   # GET /requirements/new
   def new
-    @requirement = Requirement.new
+    @requirement = @project.requirements.build
   end
 
   # GET /requirements/1/edit
@@ -21,7 +22,7 @@ class RequirementsController < ApplicationController
 
   # POST /requirements
   def create
-    @requirement = Requirement.new(requirement_params)
+    @requirement = @project.requirements.build(requirement_params)
 
     if @requirement.save
       redirect_to @requirement, notice: "Requirement was successfully created."
@@ -42,10 +43,13 @@ class RequirementsController < ApplicationController
   # DELETE /requirements/1
   def destroy
     @requirement.destroy
-    redirect_to requirements_url, notice: "Requirement was successfully destroyed."
+    redirect_to project_requirements_url(@requirement.project), notice: "Requirement was successfully destroyed."
   end
 
   private
+    def set_project
+      @project = Project.find(params[:project_id])
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_requirement
       @requirement = Requirement.find(params[:id])
@@ -53,6 +57,6 @@ class RequirementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def requirement_params
-      params.require(:requirement).permit(:project_id)
+      params.require(:requirement).permit()
     end
 end

@@ -1,4 +1,6 @@
-<%= form_with(model: requirement, class: "contents") do |form| %>
+<% model = [ requirement.persisted? ? nil : requirement.project, requirement].compact %>
+
+<%= form_with(model: model, class: "contents") do |form| %>
   <% if requirement.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
       <h2><%= pluralize(requirement.errors.count, "error") %> prohibited this requirement from being saved:</h2>

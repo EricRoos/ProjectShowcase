@@ -17,18 +17,18 @@ RSpec.describe "/requirements", type: :request do
   # This should return the minimal set of attributes required to create a valid
   # Requirement. As you add validations to Requirement, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:project) { FactoryBot.create(:project) }
+  let(:valid_attributes) {{
+    project_id: project.id
+  }}
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  let(:invalid_attributes) {{
+  }}
 
   describe "GET /index" do
     it "renders a successful response" do
       Requirement.create! valid_attributes
-      get requirements_url
+      get project_requirements_url(project)
       expect(response).to be_successful
     end
   end
@@ -43,7 +43,7 @@ RSpec.describe "/requirements", type: :request do
 
   describe "GET /new" do
     it "renders a successful response" do
-      get new_requirement_url
+      get new_project_requirement_url(project)
       expect(response).to be_successful
     end
   end
@@ -60,25 +60,25 @@ RSpec.describe "/requirements", type: :request do
     context "with valid parameters" do
       it "creates a new Requirement" do
         expect {
-          post requirements_url, params: { requirement: valid_attributes }
+          post project_requirements_url(project), params: { requirement: valid_attributes }
         }.to change(Requirement, :count).by(1)
       end
 
       it "redirects to the created requirement" do
-        post requirements_url, params: { requirement: valid_attributes }
+        post project_requirements_url(project), params: { requirement: valid_attributes }
         expect(response).to redirect_to(requirement_url(Requirement.last))
       end
     end
 
     context "with invalid parameters" do
-      it "does not create a new Requirement" do
+      xit "does not create a new Requirement" do
         expect {
           post requirements_url, params: { requirement: invalid_attributes }
         }.to change(Requirement, :count).by(0)
       end
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
-        post requirements_url, params: { requirement: invalid_attributes }
+      xit "renders a successful response (i.e. to display the 'new' template)" do
+        post project_requirements_url(project), params: { requirement: invalid_attributes }
         expect(response).to be_successful
       end
     end
@@ -106,7 +106,7 @@ RSpec.describe "/requirements", type: :request do
     end
 
     context "with invalid parameters" do
-      it "renders a successful response (i.e. to display the 'edit' template)" do
+      xit "renders a successful response (i.e. to display the 'edit' template)" do
         requirement = Requirement.create! valid_attributes
         patch requirement_url(requirement), params: { requirement: invalid_attributes }
         expect(response).to be_successful
@@ -125,7 +125,7 @@ RSpec.describe "/requirements", type: :request do
     it "redirects to the requirements list" do
       requirement = Requirement.create! valid_attributes
       delete requirement_url(requirement)
-      expect(response).to redirect_to(requirements_url)
+      expect(response).to redirect_to(project_requirements_url(requirement.project))
     end
   end
 end
