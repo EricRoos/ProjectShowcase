@@ -14,6 +14,7 @@ class RequirementsController < ApplicationController
   # GET /requirements/new
   def new
     @requirement = @project.requirements.build
+    @requirement.story = ["So that", "Given", "When", "Then"].map{|str| "<b>#{str}</b>"}.join("<br/><br/>")
   end
 
   # GET /requirements/1/edit

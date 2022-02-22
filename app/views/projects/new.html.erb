@@ -1,7 +1,16 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <h1 class="font-bold text-4xl">New project</h1>
-
+  <h1 class="font-bold text-4xl">Submit a cool idea for people to flex their skills</h1>
+  <h5 class="text-gray-500 text-xl">let&apos;s pick a great name</h5>
+  <hr class='my-4'/>
+  <div class='text-sm'>
+    <span class='font-semibold'>Once you pick a name you will be able to:</span>
+    <ul class='list-disc ml-4 text-gray-500'>
+      <li>Provide a rich-text description</li>
+      <li>Provide a list of requirements</li>
+      <li>Upload design documents</li>
+      <li>Tag your project so people can find it easily</li>
+    </ul>
+  </div>
   <%= render "form", project: @project %>
-
   <%= link_to 'Back to projects', projects_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 </div>
