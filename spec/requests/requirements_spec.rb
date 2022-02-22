@@ -19,10 +19,12 @@ RSpec.describe "/requirements", type: :request do
   # adjust the attributes here as well.
   let(:project) { FactoryBot.create(:project) }
   let(:valid_attributes) {{
-    project_id: project.id
+    project_id: project.id,
+    story: "<b>Foo</b>bar"
   }}
 
   let(:invalid_attributes) {{
+    story: nil
   }}
 
   describe "GET /index" do
@@ -66,7 +68,7 @@ RSpec.describe "/requirements", type: :request do
 
       it "redirects to the created requirement" do
         post project_requirements_url(project), params: { requirement: valid_attributes }
-        expect(response).to redirect_to(requirement_url(Requirement.last))
+        expect(response).to redirect_to(project_requirements_url(project))
       end
     end
 

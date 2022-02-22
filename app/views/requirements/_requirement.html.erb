@@ -1,12 +1,9 @@
 <div id="<%= dom_id requirement %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Project:</strong>
-    <%= requirement.project_id %>
-  </p>
+  <div class="my-5">
+    <%= requirement.story %>
+  </div>
 
   <% if action_name != "show" %>
-    <%= link_to "Show this requirement", requirement, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this requirement', edit_requirement_path(requirement), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
+    <%= link_to 'Edit this requirement', edit_requirement_path(requirement), class: "text-sm rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
   <% end %>
 </div>

@@ -25,7 +25,7 @@ class RequirementsController < ApplicationController
     @requirement = @project.requirements.build(requirement_params)
 
     if @requirement.save
-      redirect_to @requirement, notice: "Requirement was successfully created."
+      redirect_to [@project, :requirements], notice: "Requirement was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -34,7 +34,7 @@ class RequirementsController < ApplicationController
   # PATCH/PUT /requirements/1
   def update
     if @requirement.update(requirement_params)
-      redirect_to @requirement, notice: "Requirement was successfully updated."
+      redirect_to [@requirement.project, :requirements], notice: "Requirement was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
@@ -57,6 +57,6 @@ class RequirementsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def requirement_params
-      params.require(:requirement).permit()
+      params.require(:requirement).permit(:story)
     end
 end

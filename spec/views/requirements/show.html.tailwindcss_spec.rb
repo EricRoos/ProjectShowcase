@@ -4,7 +4,8 @@ RSpec.describe "requirements/show", type: :view do
   let(:project) { FactoryBot.create(:project) }
   before(:each) do
     @requirement = assign(:requirement, Requirement.create!(
-      project: project
+      project: project,
+      story: 'foo'
     ))
   end
 
