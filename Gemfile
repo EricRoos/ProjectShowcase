@@ -55,8 +55,10 @@ group :development, :test do
 end
 
 group :development do
+  gem "rack-livereload"
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
+  gem 'guard-livereload', '~> 2.5', require: false
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -74,3 +76,5 @@ gem "factory_bot_rails", "~> 6.2", :groups => [:development, :test]
 gem "devise", "~> 4.8"
 
 gem "faker", "~> 2.19", :groups => [:development, :test]
+
+gem "guard-rspec", "~> 4.7", :groups => [:test, :development]
