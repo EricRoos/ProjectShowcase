@@ -24,9 +24,6 @@
           <%= link_to "Requirements", [@project, :requirements] %>
         </li>
         <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
-          <%= heroicon('paper-clip', class_name: 'h-4') %> Documents
-        </li>
-        <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
           <%= heroicon('collection', class_name: 'h-4') %> Submissions
         </li>
       </ul>
@@ -45,7 +42,7 @@
         </li>
       </ul>
     </div>
-    <div class='flex-grow'>
+    <div class='w-3/4'>
       <%= yield %>
     </div>
   </div>

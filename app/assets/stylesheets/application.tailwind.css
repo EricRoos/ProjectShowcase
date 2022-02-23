@@ -12,3 +12,7 @@
 
 */
 @import 'actiontext.css';
+
+html {
+  font-family: 'Red Hat Mono', monospace;
+}

@@ -1,3 +1,17 @@
 <%= render layout: 'layouts/project' do %>
-  <%= @project.description %>
+  <% if @project.description.empty? %>
+    <div class='w-full flex justify-center items-center flex-col gap-4'> 
+      <div class='w-full text-center'>
+        <div class='text-2xl text-gray-500'>Let people know what they are building</div>
+      </div>
+      <div class='w-full'>
+        <%= image_tag('empty-project-description.svg', class: 'w-3/5 mx-auto') %>
+      </div>
+      <div class=''>
+        <%= link_to 'Add some details', [:edit,@project], class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+      </div>
+    </div>
+  <% else %>
+    <%= @project.description %>
+  <% end %>
 <% end %>

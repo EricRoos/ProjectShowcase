@@ -12,5 +12,18 @@
   <div class="my-5 bg-gray-100 rounded-xl p-4">
     <%= requirement.story %>
   </div>
+  <div class='flex flex-wrap gap-4'>
+    <% requirement.documents.each do |doc| %>
+      <div class='aspect-square w-1/5 border-2 border-solid border-gray-300 rounded-xl flex flex-col items-center justify-center p-2 text-center'>
+        <%= heroicon('document-download', class_name: 'h-12') %>
+        <div class='truncate w-full text-sm'>
+          <%= doc.filename %>
+        </div>
+        <div class='truncate w-full text-sm'>
+          <%= doc.content_type%>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
 </div>
