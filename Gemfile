@@ -84,3 +84,5 @@ gem "capybara", "~> 3.36", :group => :test
 gem "selenium-webdriver", "~> 4.1", :group => [:test, :development]
 
 gem "parallel_rspec", "~> 2.1", :groups => [:development, :test]
+
+gem "rails_heroicons", "~> 0.7.0"

@@ -9,7 +9,9 @@
   </div>
 
   <div id="projects" class="min-w-full">
-    <%= render @projects %>
+    <% @projects.each do |project| %>
+      <div class='text-3xl'><%= link_to project.title, project, class: 'hover:text-gray-500 hover:text-4xl' %></div>
+    <% end %>
   </div>
 
 </div>

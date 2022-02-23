@@ -5,22 +5,44 @@
     <% end %>
   </div>
   <div class="mx-auto w-full">
-    <%= render @project %>
-    <div class="mx-auto w-full text-sm">
-      <%= link_to 'Edit this project', edit_project_path(@project), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-      <div class="inline-block ml-2">
-        <%= button_to 'Destroy this project', project_path(@project), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
-      </div>
-      <%= link_to 'Back to projects', projects_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <div class="mx-auto w-full text-sm flex items-center gap-2 text-gray-500">
+      <%= heroicon('arrow-circle-left', class_name: 'h-4') %>
+      <%= link_to 'Back to projects', projects_path, class: "" %>
     </div>
+    <%= render @project %>
   </div>
   <hr class='my-4'/>
   <div class='flex'>
-    <div class='w-1/4 underline'>
+    <div class='w-1/4'>
       <ul>
-        <li><%= link_to "Requirements", [@project, :requirements] %></li>
-        <li>Documents</li>
-        <li>Submissions</li>
+        <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
+          <%= heroicon('information-circle', class_name: 'h-4') %>
+          <%= link_to "Details", @project %>
+        </li>
+        <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
+          <%= heroicon('clipboard-check', class_name: 'h-4') %>
+          <%= link_to "Requirements", [@project, :requirements] %>
+        </li>
+        <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
+          <%= heroicon('paper-clip', class_name: 'h-4') %> Documents
+        </li>
+        <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
+          <%= heroicon('collection', class_name: 'h-4') %> Submissions
+        </li>
+      </ul>
+      <hr class='my-4 mr-8'/>
+      <ul>
+        <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
+          <%= heroicon('pencil', class_name: 'h-4') %>
+          <%= link_to "Edit Project", [:edit, @project] %>
+        </li>
+      </ul>
+      <hr class='my-4 mr-8'/>
+      <ul>
+        <li class='text-red-500 text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
+          <%= heroicon('trash', class_name: 'h-4') %>
+          <%= button_to "Delete Project", @project, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' }} %>
+        </li>
       </ul>
     </div>
     <div class='flex-grow'>

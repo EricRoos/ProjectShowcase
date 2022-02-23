@@ -4,7 +4,7 @@ class RequirementsController < ApplicationController
 
   # GET /requirements
   def index
-    @requirements = Requirement.all
+    @requirements = @project.requirements
   end
 
   # GET /requirements/1

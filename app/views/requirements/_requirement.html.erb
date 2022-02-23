@@ -4,7 +4,9 @@
       <%= requirement.description%>
     </div>
     <% if action_name != "show" %>
-      <%= link_to 'Edit', edit_requirement_path(requirement), class: "text-sm underline font-medium" %>
+      <%= link_to edit_requirement_path(requirement), class: "text-sm underline font-medium flex items-center" do %>
+        <%= heroicon('pencil', class_name: 'h-4') %> Edit
+      <% end %>
     <% end %>
   </div>
   <div class="my-5 bg-gray-100 rounded-xl p-4">
