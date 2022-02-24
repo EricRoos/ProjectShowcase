@@ -4,4 +4,36 @@ en:
       app_name: Showcase
       app_tagline: your skills without wasting time finding ideas
       get_started: Get started
+    for_developers:
+      title: foo
+    features:
+      project_finder:
+        name: Project finder
+        description: Search by tags, size, and a variety of other metrics to find the perfect problem for you to start working on right away. 
+        icon_name: globe-alt
+      submit_solutions:
+        name: No cost to submit solutions
+        description: We never will charge developers to upload solutions and get feedback. We are building this for the dev community and want to encourage great software development.
+        icon_name: scale
+      provide_feedback:
+        name: Provide feedback to others
+        description: Looking to get better at reviewing code? Look over other's solutions and provide feedback. Others can award your feedback as well for giving good advice.
+        icon_name: lightning-bolt
+      submit_projects:
+        name: Submit your own ideas
+        description: Have a cool project to share? Anyone can submit ideas for others to solve.
+        icon_name: annotation
+      private_projects:
+        name: Private projects
+        description: Use our platform to host your interview take home problems, keep your invitees responses private and not viewable by others.
+        icon_name: lock-closed
+      timed_submissions:
+        name: Timed Submissions
+        description: Only allow for a set time period for someone to submit a solution once started.
+        icon_name: clock
+      team_members:
+        name: Team Members
+        description: Invite other users to your project as reviewers so that they can contribute to reviewing submissions.
+        icon_name: users 
+
 
