@@ -1,25 +1,25 @@
 build:
-	docker build . --build-arg RAILS_MASTER_KEY=${DATEFEED_ENCKEY} -f Dockerfile -t date_feed
+	docker build . --build-arg RAILS_MASTER_KEY=${SHOWCASE_ENCKEY} -f Dockerfile -t showcase
 run:
-	docker run -p 5000:3000 -e RAILS_MASTER_KEY=${DATEFEED_ENCKEY} --rm -ti date_feed:latest
+	docker run -p 5000:3000 -e RAILS_MASTER_KEY=${SHOWCASE_ENCKEY} --rm -ti showcase:latest
 bash:
-	docker run -e RAILS_MASTER_KEY=${DATEFEED_ENCKEY} --rm -ti date_feed:latest bash
+	docker run -e RAILS_MASTER_KEY=${SHOWCASE_ENCKEY} --rm -ti showcase:latest bash
 prod_console:
-	ssh Budgetr -t docker run -e RAILS_MASTER_KEY=${DATEFEED_ENCKEY} --rm -ti ericroos13/date_feed:latest bundle exec rails c
+	ssh DateFeed -t docker run -e RAILS_MASTER_KEY=${SHOWCASE_ENCKEY} --rm -ti ericroos13/showcase:latest bundle exec rails c
 new_prod_console:
-	ssh Budgetr -t docker-compose run --rm app bundle exec rails c
+	ssh DateFeed -t docker-compose run --rm app bundle exec rails c
 create_db:
-	docker run -e RAILS_MASTER_KEY=${DATEFEED_ENCKEY} --rm -ti date_feed:latest bundle exec rake db:create
+	ssh DateFeed -t docker run -e RAILS_MASTER_KEY=${SHOWCASE_ENCKEY} --rm -ti showcase:latest bundle exec rake db:create
 migrate_db:
-	docker run -e RAILS_MASTER_KEY=${DATEFEED_ENCKEY} --rm -ti date_feed:latest bundle exec rake db:migrate
+	ssh DateFeed -t docker run -e RAILS_MASTER_KEY=${SHOWCASE_ENCKEY} --rm -ti showcase:latest bundle exec rake db:migrate
 push_image:
-	docker tag date_feed:latest ericroos13/date_feed && docker tag date_feed:latest ericroos13/date_feed && docker push ericroos13/date_feed
+	docker tag showcase:latest ericroos13/showcase && docker tag showcase:latest ericroos13/showcase && docker push ericroos13/showcase
 deploy:
-	ssh DateFeed "cd /home/ec2-user/deployables/date_feed && ./update-service.sh"
+	ssh DateFeed "cd /home/ec2-user/deployables/showcase && ./update-service.sh"
 circle_ci_deploy:
 	ssh ec2-user@54.224.120.0 /home/ec2-user/deploy.sh
 deploy_pipeline:
-	make build push_image migrate_db deploy
+	make build push_image deploy
 circleci_deploy_pipeline:
 	make build push_image migrate_db circle_ci_deploy
 edit_prod_secret:

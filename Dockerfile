@@ -7,7 +7,8 @@ RUN apk add --no-cache --update build-base \
                                 postgresql-dev \
                                 nodejs \
                                 yarn \
-                                tzdata
+                                tzdata \
+                                gcompat
 
 ARG RAILS_MASTER_KEY
 
@@ -19,19 +20,18 @@ RUN mkdir /app
 WORKDIR /app
 
 COPY Gemfile Gemfile.lock /app/
-RUN gem install bundler:2.2.16
+RUN gem install bundler:2.3.7
 RUN bundle config set --local without 'development test'
 RUN bundle pack
 RUN bundle install --path /gems --jobs `expr $(cat /proc/cpuinfo | grep -c "cpu cores") - 1` --retry 3
 
-COPY package.json yarn.lock /app/
+#COPY package.json yarn.lock /app/
 
-RUN yarn install
+#RUN yarn install
 
 COPY . /app
 
-RUN RAILS_MASTER_KEY=${RAILS_MASTER_KEY} bundle exec rake assets:precompile \
-  && rm -rf node_modules/
+RUN RAILS_MASTER_KEY=${RAILS_MASTER_KEY} bundle exec rake assets:precompile && rm -rf node_modules/
 
 EXPOSE 3000
 CMD bundle exec rails s -p 3000
