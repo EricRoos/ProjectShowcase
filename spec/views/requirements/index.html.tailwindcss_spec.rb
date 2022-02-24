@@ -9,6 +9,7 @@ RSpec.describe "requirements/index", type: :view do
   before(:each) do
     assign(:project, project)
     assign(:requirements, requirements)
+    allow(view).to receive(:current_user).and_return(project.creator)
   end
 
   it "renders a list of requirements" do

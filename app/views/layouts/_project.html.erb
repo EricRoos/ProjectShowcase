@@ -13,7 +13,7 @@
   </div>
   <hr class='my-4'/>
   <div class='flex'>
-    <div class='w-1/4'>
+    <div class='w-1/4 flex flex-col'>
       <ul>
         <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
           <%= heroicon('information-circle', class_name: 'h-4') %>
@@ -27,20 +27,22 @@
           <%= heroicon('collection', class_name: 'h-4') %> Submissions
         </li>
       </ul>
-      <hr class='my-4 mr-8'/>
-      <ul>
-        <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
-          <%= heroicon('pencil', class_name: 'h-4') %>
-          <%= link_to "Edit Project", [:edit, @project] %>
-        </li>
-      </ul>
-      <hr class='my-4 mr-8'/>
-      <ul>
-        <li class='text-red-500 text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
-          <%= heroicon('trash', class_name: 'h-4') %>
-          <%= button_to "Delete Project", @project, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' }} %>
-        </li>
-      </ul>
+      <% if ProjectPolicy.new(current_user, @project).edit? %>
+        <ul>
+          <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
+            <%= heroicon('pencil', class_name: 'h-4') %>
+            <%= link_to "Edit Project", [:edit, @project] %>
+          </li>
+        </ul>
+      <% end %>
+      <% if ProjectPolicy.new(current_user, @project).destroy? %>
+        <ul>
+          <li class='text-red-500 text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
+            <%= heroicon('trash', class_name: 'h-4') %>
+            <%= button_to "Delete Project", @project, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' }} %>
+          </li>
+        </ul>
+      <% end %>
     </div>
     <div class='w-3/4'>
       <%= yield %>
