@@ -1,5 +1,6 @@
 # This file is copied to spec/ when you run 'rails generate rspec:install'
 require 'spec_helper'
+require "pundit/rspec"
 require 'capybara'
 require "action_text/system_test_helper"
 
