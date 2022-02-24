@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Mono:ital,wght@0,300;0,400;0,600;1,300;1,500;1,700&display=swap" rel="stylesheet">
   </head>
 
-  <body>
+  <body class='bg-gray-800'>
     <% if true || controller_name != 'landing_page' %>
       <nav class="bg-gray-800">
         <div class="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
@@ -124,8 +124,10 @@
       </nav>
     <% end %>
 
-    <main class="container mx-auto mt-8 px-5 flex flex-col">
-      <%= yield %>
+    <main class="bg-white">
+      <div class='container mx-auto py-8 px-5 flex flex-col min-h-[75vh]'>
+        <%= yield %>
+      </div>
     </main>
     <%= render partial: 'layouts/footer' %>
   </body>
