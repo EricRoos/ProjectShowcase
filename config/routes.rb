@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :requirements, shallow: true
   end
 
+  resource :landing_page, only: [:show]
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'
@@ -11,5 +12,5 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
-  root to: "projects#index"
+  root to: "landing_page#show"
 end

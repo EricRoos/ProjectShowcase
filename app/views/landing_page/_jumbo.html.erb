@@ -1,0 +1,14 @@
+<div class='w-full flex'>
+  <div class='w-full md:w-1/2 flex justify-center items-center flex-col'>
+    <div class='text-4xl text-center'>
+      <span class='font-bold text-blue-500'>Showcase</span> your skills without wasting time finding ideas
+    </div>
+    <div class='pt-8'>
+      <%= link_to 'Get Started', new_user_registration_path, class: "text-center w-auto rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    </div>
+  </div>
+
+  <div class='hidden md:block w-1/2 flex justify-center items-center'>
+    <%= image_tag('landing-page-jumobotron.png', class: 'w-auto h-96') %>
+  </div>
+</div>
