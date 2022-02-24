@@ -6,7 +6,8 @@ RSpec.feature "AddRequirements", type: :feature do
     sign_in user
     project = create(:project)
     visit project_path(project)
-    click_on 'New requirement'
+    click_on "Requirements"
+    click_on 'Add a requirement'
     fill_in 'Description', with: 'ya'
     fill_in_rich_text_area 'Story', with: 'story'
     click_on 'Create Requirement'

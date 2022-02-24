@@ -71,7 +71,7 @@ RSpec.describe "/projects", type: :request do
 
       it "redirects to the created project" do
         post projects_url, params: { project: valid_attributes }
-        expect(response).to redirect_to(project_url(Project.last))
+        expect(response).to redirect_to([:edit, Project.last])
       end
     end
 
