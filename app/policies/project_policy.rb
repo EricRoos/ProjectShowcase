@@ -16,15 +16,19 @@ class ProjectPolicy < ApplicationPolicy
   end
 
   def update?
-    @record.creator == @user
+    manage?
   end
 
   def edit?
-    update?
+    manage?
   end
 
   def destroy?
-    update?
+    manage?
+  end
+
+  def manage?
+    @record.creator == @user
   end
 
   class Scope < Scope

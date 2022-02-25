@@ -15,28 +15,32 @@
       <div id="requirements" class="min-w-full">
         <%= render @requirements %>
         <% if @requirements.empty? %>
-          <div class='text-gray-500 flex flex-col items-center justify-center gap-8 w-full'>
-            <div class='text-2xl'> 
-              What&apos;s it supposed to do?
-            </div>
-            <div class='flex'>
-              <div class='w-1/2 mx-auto flex flex-col gap-4'>
-                <div>
-                  <div class='text-lg font-semibold mb-2'>Good requirements should...</div>
-                  <ul class='list-disc pl-4'>
-                    <li class='pl-2'>Be concise</li>
-                    <li class='pl-2'>Clear</li>
-                  </ul>
+          <% if ProjectPolicy.new(current_user, @project).manage? %>
+            <div class='text-gray-500 flex flex-col items-center justify-center gap-8 w-full'>
+              <div class='text-2xl'> 
+                What&apos;s it supposed to do?
+              </div>
+              <div class='flex'>
+                <div class='w-1/2 mx-auto flex flex-col gap-4'>
+                  <div>
+                    <div class='text-lg font-semibold mb-2'>Good requirements should...</div>
+                    <ul class='list-disc pl-4'>
+                      <li class='pl-2'>Be concise</li>
+                      <li class='pl-2'>Clear</li>
+                    </ul>
+                  </div>
+                  <div class='px-8'>
+                    <%= link_to 'Add a requirement', new_project_requirement_path(@project), class: "text-center w-auto rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+                  </div>
                 </div>
-                <div class='px-8'>
-                  <%= link_to 'Add a requirement', new_project_requirement_path(@project), class: "text-center w-auto rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+                <div class='w-1/2 mx-auto'>
+                  <%= image_tag('empty-requirements.png', class: 'w-full') %>
                 </div>
               </div>
-              <div class='w-1/2 mx-auto'>
-                <%= image_tag('empty-requirements.png', class: 'w-full') %>
-              </div>
             </div>
-          </div>
+          <% else %>
+              Nothing here
+          <% end %>
         <% end %>
       </div>
     </div>
