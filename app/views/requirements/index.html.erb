@@ -8,7 +8,7 @@
       <% if @requirements.any? %>
         <div class="flex justify-between items-center">
           <h2 class="font-bold text-4xl">Requirements</h2>
-          <%= link_to 'Add a requirement', new_project_requirement_path(@project), class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+          <%= link_to 'Add a requirement', new_project_requirement_path(@project), class: "rounded-lg py-3 px-5 bg-brand text-white block font-medium" %>
         </div>
       <% end %>
 
@@ -30,7 +30,7 @@
                     </ul>
                   </div>
                   <div class='px-8'>
-                    <%= link_to 'Add a requirement', new_project_requirement_path(@project), class: "text-center w-auto rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+                    <%= link_to 'Add a requirement', new_project_requirement_path(@project), class: "text-center w-auto rounded-lg py-3 px-5 bg-brand text-white block font-medium" %>
                   </div>
                 </div>
                 <div class='w-1/2 mx-auto'>
