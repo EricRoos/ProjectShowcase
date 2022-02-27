@@ -6,13 +6,11 @@ class Project < ApplicationRecord
   validates_presence_of :title
   has_rich_text :description
   has_many_attached :documents
+  acts_as_taggable_on :tags
 
   meilisearch do
     attribute :title
-    attribute :tags
+    attribute :tag_list
   end
 
-  def tags
-    ['rails','foo', 'bar']
-  end
 end

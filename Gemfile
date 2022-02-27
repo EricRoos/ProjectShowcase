@@ -95,3 +95,5 @@ gem "flipper", "~> 0.24.0"
 gem "flipper-active_record", "~> 0.24.0"
 
 gem "meilisearch-rails", "~> 0.5.1"
+
+gem "acts-as-taggable-on", "~> 9.0"
