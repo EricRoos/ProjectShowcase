@@ -93,3 +93,5 @@ gem "pundit", "~> 2.2"
 
 gem "flipper", "~> 0.24.0"
 gem "flipper-active_record", "~> 0.24.0"
+
+gem "meilisearch-rails", "~> 0.5.1"
