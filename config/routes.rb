@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   end
 
   resource :landing_page, only: [:show]
+
+  get 'dashboard', action: :show, controller: 'dashboard'
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'

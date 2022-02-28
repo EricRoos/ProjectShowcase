@@ -1,0 +1,71 @@
+<div class='flex flex-col md:flex-row gap-8'>
+  <div class='flex flex-col w-full md:w-1/5 gap-4'>
+    <div class='flex flex-col bg-gray-100 gap-8 p-8 rounded-xl'>
+      <div class='w-full '>
+        <%= link_to projects_path, class: 'flex gap-2 items-center hover:text-brand' do %>
+          <%= heroicon('clipboard-check', class_name: 'h-4') %> Projects 
+        <% end %>
+      </div>
+      <div class='w-full '>
+        <%= link_to '#', class: 'flex gap-2 items-center hover:text-brand' do %>
+          <%= heroicon('user', class_name: 'h-4') %> Profile
+        <% end %>
+      </div>
+      <div class='w-full '>
+        <%= link_to '#', class: 'flex gap-2 items-center hover:text-brand' do %>
+          <%= heroicon('search', class_name: 'h-4') %> Find a project
+        <% end %>
+      </div>
+      <div class='w-full '>
+        <%= link_to '#', class: 'flex gap-2 items-center hover:text-brand' do %>
+          <%= heroicon('support', class_name: 'h-4') %> Support
+        <% end %>
+      </div>
+    </div>
+    <div class='flex flex-col border border-solid border-gray-300  gap-8 p-8 rounded-xl'>
+      <div class='text-xl flex flex-gap items-center gap-2'>
+        <%= heroicon('bell', class_name: 'h-4') %> Notifications
+      </div>
+    </div>
+  </div>
+  <div class='flex flex-col gap-8 w-full md:w-4/5'>
+    <div class='flex flex-col  rounded  gap-8'>
+      <div class='text-2xl text-brand'>Active Projects</div>
+      <div class='w-full flex gap-2 font-bold'>
+        <div class='w-2/5 md:w-3/5 bg-gray-100 p-4'>
+          Name
+        </div>
+        <div class='w-2/5 md:w-1/5 bg-gray-100 p-4'>
+          Started On
+        </div>
+        <div class='w-1/5 bg-gray-100 p-4'>
+          Actions
+        </div>
+      </div>
+      <div class='w-full flex flex-col gap-2' id='user_projects'>
+        <%= render partial: 'project' %>
+        <%= render partial: 'project' %>
+        <%= render partial: 'project' %>
+        <%= render partial: 'project' %>
+      </div>
+    </div>
+
+    <div class='flex flex-col  rounded  gap-8'>
+      <div class='text-2xl text-brand'>Stats</div>
+      <div class='w-full flex flex-wrap gap-8' id='stats'>
+        <%= render partial: 'stat', locals: { name: 'Completed Projects', metric: 50 } %>
+        <%= render partial: 'stat', locals: { name: 'Completed Projects', metric: 50 } %>
+        <%= render partial: 'stat', locals: { name: 'Completed Projects', metric: 50 } %>
+        <%= render partial: 'stat', locals: { name: 'Completed Projects', metric: 50 } %>
+        <%= render partial: 'stat', locals: { name: 'Completed Projects', metric: 50 } %>
+      </div>
+    </div>
+
+
+    <div class='flex flex-col  rounded  gap-8'>
+      <div class='text-2xl text-brand'>Recently Completed</div>
+      <div class='w-full flex flex-wrap gap-8' id='recently_completed_projects'>
+      </div>
+    </div>
+  </div>
+</div>
