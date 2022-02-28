@@ -34,7 +34,8 @@ class RequirementsController < ApplicationController
 
   # PATCH/PUT /requirements/1
   def update
-    if @requirement.update(requirement_params)
+    documents = requirement_params[:documents] || []
+    if @requirement.update(requirement_params.slice(:description,:story)) && documents.each{ |doc| @requirement.documents.attach(doc) }
       redirect_to [@requirement.project, :requirements], notice: "Requirement was successfully updated."
     else
       render :edit, status: :unprocessable_entity
