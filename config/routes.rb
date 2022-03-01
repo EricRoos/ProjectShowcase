@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   get 'dashboard', action: :show, controller: 'dashboard'
 
-  get 'project_search', action: :new, controller: 'project_search'
+  get 'project_search', action: :new, controller: 'project_search', as: 'new_project_search'
   post 'project_search', action: :create, controller: 'project_search'
 
   devise_for :users, controllers: {

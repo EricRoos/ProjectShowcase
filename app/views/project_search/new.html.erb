@@ -1,13 +1,28 @@
-search for projects
-
-<%= form_with(url: project_search_path, data: { turbo_frame: :search_results }) do |form| %>
-  <%= form.text_field :search, value: params[:search] %>
-  <%= form.submit 'Search'%>
-<% end %>
-<%= turbo_frame_tag :search_results, target: '_top' do %>
-  <% (@projects || []).each do |project| %>
-    <div>
-    <%= link_to project.title, project %>
-    </div> 
+<div class='flex flex-col gap-4 bg-gray-100 rounded p-4'>
+  <div class=''>
+    <%= form_with(url: project_search_path, data: { turbo_frame: :search_results }) do |form| %>
+      <div class='flex flex-col'>
+        <%= form.label :search %>
+        <%= form.text_field :search, value: params[:search], autocomplete: "off", data: { controller: 'search', action: 'search#change' }, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", placeholder: 'Search Term' %>
+      </div>
+    <% end %>
+  </div>
+  <div>
+  <%= turbo_frame_tag :search_results, target: '_top' do %>
+    <div class='flex flex-col gap-4'>
+      <% (@projects || []).each do |project| %>
+        <div class='w-full flex gap-2'>
+          <div class='w-2/5 md:w-3/5 bg-white p-4'>
+            <%= project.title %>
+          </div>
+          <div class='w-1/5 bg-white p-4 flex gap-4'>
+            <div class='flex justify-center items-center'>
+              <%= link_to 'View', project %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
   <% end %>
-<% end %>
+  </div>
+</div>
