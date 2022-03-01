@@ -1,0 +1,13 @@
+search for projects
+
+<%= form_with(url: project_search_path, data: { turbo_frame: :search_results }) do |form| %>
+  <%= form.text_field :search, value: params[:search] %>
+  <%= form.submit 'Search'%>
+<% end %>
+<%= turbo_frame_tag :search_results, target: '_top' do %>
+  <% (@projects || []).each do |project| %>
+    <div>
+    <%= link_to project.title, project %>
+    </div> 
+  <% end %>
+<% end %>

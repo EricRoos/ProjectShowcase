@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'project_search/create'
   resources :projects do
     resources :requirements, shallow: true
   end
@@ -6,6 +7,9 @@ Rails.application.routes.draw do
   resource :landing_page, only: [:show]
 
   get 'dashboard', action: :show, controller: 'dashboard'
+
+  get 'project_search', action: :new, controller: 'project_search'
+  post 'project_search', action: :create, controller: 'project_search'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
