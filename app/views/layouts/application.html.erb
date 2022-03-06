@@ -68,7 +68,7 @@
             </div>
             <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
               <% if current_user %>
-                <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class:" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium" %>
+                <%= button_to 'Sign out', destroy_user_session_path, method: :delete, class:" text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium", data: { turbo: false } %>
                 <button type="button" class="bg-brand-dark p-1 rounded-full text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white">
                   <span class="sr-only">View notifications</span>
                   <!-- Heroicon name: outline/bell -->
@@ -127,6 +127,14 @@
     <% end %>
 
     <main class="bg-white">
+      <div class="mx-auto w-full">
+        <% if notice.present? %>
+          <p class="text-center w-full py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium inline-block"><%= notice %></p>
+        <% end %>
+        <% if alert.present? %>
+          <p class="text-center w-full py-2 px-3 bg-red-50 mb-5 text-red-500 font-medium inline-block" ><%= alert %></p>
+        <% end %>
+      </div>
       <div class='container mx-auto py-8 px-5 flex flex-col min-h-[75vh]'>
         <%= yield %>
       </div>
