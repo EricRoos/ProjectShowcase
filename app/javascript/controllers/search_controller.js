@@ -5,9 +5,14 @@ export default class extends Controller {
   static debounces = ['change'];
   connect() {
     useDebounce(this, { wait: 500 });
+    this.search();
   }
 
   change(ev) {
+    this.search();
+  }
+
+  search() {
     this.element.closest("form").requestSubmit();
   }
 }
