@@ -3,7 +3,8 @@ class ProjectSearchController < ApplicationController
   end
 
   def create
-    @projects = Project.search(params[:search])
+    @projects = Project.includes(:tags)
+                        .search(params[:search], sort: [ 'weighted_score:desc'] )
     render :new
   end
 end

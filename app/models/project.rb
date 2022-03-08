@@ -1,5 +1,6 @@
 class Project < ApplicationRecord
   include MeiliSearch::Rails
+  acts_as_votable
 
   has_many :requirements, dependent: :destroy
   belongs_to :creator, class_name: 'User'
@@ -11,6 +12,8 @@ class Project < ApplicationRecord
   meilisearch do
     attribute :title
     attribute :tag_list
+    attribute :weighted_score
+    sortable_attributes [:weighted_score]
   end
 
 end

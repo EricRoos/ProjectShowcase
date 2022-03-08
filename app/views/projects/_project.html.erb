@@ -1,5 +1,13 @@
 <div id="<%= dom_id project %>">
-  <p class="my-5">
-    <h2 class="font-bold text-4xl"><%= project.title %></h2>
-  </p>
+  <div class='flex flex-col'>
+    <div class='flex items-center'>
+      <p class="my-5">
+        <h2 class="font-bold text-4xl"><%= project.title %></h2>
+      </p>
+    </div>
+    <div class='flex items-center gap-2 py-2'>
+      <%= like_button(project, current_user) %>
+      <%= dislike_button(project, current_user) %>
+    </div>
+  </div>
 </div>

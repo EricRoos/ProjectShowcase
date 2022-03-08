@@ -1,5 +1,5 @@
 class ProjectsController < ApplicationController
-  before_action :set_project, only: %i[ show edit update destroy ]
+  before_action :set_project, only: %i[ show edit update destroy like dislike ]
 
   # GET /projects
   def index
@@ -17,6 +17,28 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+  end
+
+  #POST /projects/1/like
+  def like
+    if current_user.voted_up_on?(@project)
+      @project.unliked_by current_user
+    else
+      @project.liked_by current_user
+    end
+    @project.touch # for caching, since acts as votable doesnt make this easy without adding cols
+    redirect_to request.referer || @project
+  end
+
+  #POST /projects/1/dislike
+  def dislike
+    if current_user.voted_down_on?(@project)
+      @project.undisliked_by current_user
+    else
+      @project.downvote_from current_user
+    end
+    @project.touch # for caching, since acts as votable doesnt make this easy without adding cols
+    redirect_to request.referer || @project
   end
 
   # POST /projects

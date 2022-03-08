@@ -36,6 +36,7 @@ rescue ActiveRecord::PendingMigrationError => e
 end
 
 Capybara.javascript_driver = :selenium_headless
+Capybara.enable_aria_label = true
 
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures

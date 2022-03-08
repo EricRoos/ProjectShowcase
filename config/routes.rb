@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   get 'project_search/create'
   resources :projects do
+    member do
+      post :like
+      post :dislike
+    end
     resources :requirements, shallow: true
   end
 
