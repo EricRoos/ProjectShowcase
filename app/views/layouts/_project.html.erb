@@ -33,10 +33,6 @@
             <%= heroicon('pencil', class_name: 'h-4') %>
             <%= link_to "Edit Project", [:edit, @project] %>
           </li>
-          <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
-            <%= heroicon('hashtag', class_name: 'h-4') %>
-            <%= link_to "Tags", [:edit, @project] %>
-          </li>
         </ul>
       <% end %>
       <% if ProjectPolicy.new(current_user, @project).destroy? %>

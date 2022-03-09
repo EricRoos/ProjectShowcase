@@ -1,0 +1,22 @@
+<%= turbo_frame_tag :new_project_tag do %>
+  <button class= "flex items-center gap-2 hover:text-brand hidden">
+    <%= heroicon('plus-circle', class_name: 'h-4')%> 
+    Add a tag
+  </button>
+  <div class=''>
+    <%= form_with(url: project_project_tags_path(@project), data: { 'turbo-frame': :tags }) do |form| %>
+      <div class='flex items-center'>
+        <%= form.label :tag, class: 'hidden'%>
+        <%= form.text_field :tag, class: 'bg-transparent h-8 p-0 m-0 border-0 w-32', placeholder: 'New tag...', autofocus: true, required: true %>
+        <div class='flex gap-2'>
+          <button type='submit' class='hover:text-green-500' aria-label='Add tag'>
+            <%= heroicon('check', class_name: 'h-4') %>
+          </button>
+          <button type='reset' class= 'hover:text-red-500'>
+            <%= heroicon('x-circle', class_name: 'h-4') %>
+          </button>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>

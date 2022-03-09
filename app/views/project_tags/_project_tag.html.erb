@@ -1,0 +1,7 @@
+<div id="<%= dom_id project_tag %>">
+  <% if action_name != "show" %>
+    <%= link_to "Show this project tag", project_tag, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to 'Edit this project tag', edit_project_tag_path(project_tag), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

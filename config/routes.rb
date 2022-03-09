@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :project_tags
   get 'project_search/create'
   resources :projects do
     member do
@@ -6,6 +7,7 @@ Rails.application.routes.draw do
       post :dislike
     end
     resources :requirements, shallow: true
+    resources :project_tags 
   end
 
   resource :landing_page, only: [:show]
