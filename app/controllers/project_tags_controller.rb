@@ -4,7 +4,11 @@ class ProjectTagsController < ApplicationController
 
   # GET /project_tags
   def index
-    @project_tags = @project.tag_list.reverse
+    @project_tags = @project.tag_list.sort
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
   end
 
   # GET /project_tags/1
@@ -23,6 +27,7 @@ class ProjectTagsController < ApplicationController
   def create
     @project.tag_list << params[:tag]
     @project.save
+    @project.touch
     redirect_to [@project, :project_tags] 
   end
 
@@ -39,6 +44,7 @@ class ProjectTagsController < ApplicationController
   def destroy
     @project.tag_list.remove(params[:id])
     @project.save
+    @project.touch
     redirect_to [@project, :project_tags] 
   end
 

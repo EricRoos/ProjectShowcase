@@ -1,0 +1,3 @@
+<%= turbo_stream.replace :tags do %>
+  <%= turbo_frame_tag :tags, src: project_project_tags_path(@project) %>
+<% end %>
