@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :project_tags
   get 'project_search/create'
+
+  resource :profile
+
   resources :projects do
     member do
       post :like
