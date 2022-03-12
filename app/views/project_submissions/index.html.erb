@@ -1,0 +1,16 @@
+<%= render layout: 'layouts/project', locals: { title: 'Submissions' } do %>
+  <%= turbo_frame_tag :project_submissions, target: '_top' do %>
+    <div class="w-full">
+      <div id="project_submissions" class="min-w-full">
+        <table class='table-fixed w-full'>
+          <% @project_submissions.each do |submission| %>
+            <tr>
+              <td><%= submission.url %></td>
+              <td><%= submission.user.username %></td>
+            </tr>
+          <% end %>
+        </table>
+      </div>
+    </div>
+  <% end %>
+<% end %>

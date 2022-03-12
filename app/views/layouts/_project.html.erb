@@ -1,10 +1,5 @@
 <div class="mx-auto md:w-2/3 w-full flex flex-col">
   <div class="mx-auto w-full">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-  </div>
-  <div class="mx-auto w-full">
     <div class="mx-auto w-full text-sm flex items-center gap-2 text-gray-500">
       <%= heroicon('arrow-circle-left', class_name: 'h-4') %>
       <%= link_to 'Back to projects', projects_path, class: "" %>
@@ -24,7 +19,8 @@
           <%= link_to "Requirements", [@project, :requirements] %>
         </li>
         <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
-          <%= heroicon('collection', class_name: 'h-4') %> Submissions
+          <%= heroicon('collection', class_name: 'h-4') %>
+          <%= link_to 'Submissions', [@project, :project_submissions] %>
         </li>
       </ul>
       <% if ProjectPolicy.new(current_user, @project).edit? %>
@@ -45,6 +41,10 @@
       <% end %>
     </div>
     <div class='w-3/4'>
+      <% if (title.present? rescue false) %>
+        <h5 class="text-2xl text-gray-500"><%= title %></h5>
+        <hr class='my-4'/>
+      <% end %>
       <%= yield %>
     </div>
   </div>

@@ -1,0 +1,15 @@
+<div id="<%= dom_id project_submission %>">
+  <p class="my-5">
+    <strong class="block font-medium mb-1">View Submission At:</strong>
+    <%= link_to project_submission.url, project_submission.url, class: 'text-blue-500 underline', target: '_top' %>
+  </p>
+
+  <p class="my-5">
+    <strong class="block font-medium mb-1">Submitted By:</strong>
+    <%= project_submission.user.username %>
+  </p>
+
+  <% if action_name != "show" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

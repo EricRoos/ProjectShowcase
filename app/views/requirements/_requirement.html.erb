@@ -3,7 +3,7 @@
     <div class="my-5 font-semibold text-xl">
       <%= requirement.description%>
     </div>
-    <% if action_name != "show" %>
+    <% if action_name != "show" && ProjectPolicy.new(current_user, @project).manage? %>
       <%= link_to edit_requirement_path(requirement), class: "text-sm underline font-medium flex items-center" do %>
         <%= heroicon('pencil', class_name: 'h-4') %> Edit
       <% end %>

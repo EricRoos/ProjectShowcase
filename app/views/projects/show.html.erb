@@ -1,5 +1,5 @@
-<%= render layout: 'layouts/project' do %>
-  <% if @project.description.empty? %>
+<%= render layout: 'layouts/project', locals: { title: 'Details' } do %>
+  <% if @project.description.empty? && policy(@project).manage? %>
     <div class='w-full flex justify-center items-center flex-col gap-4'> 
       <div class='w-full text-center'>
         <div class='text-2xl text-gray-500'>Let people know what they are building</div>
@@ -11,6 +11,8 @@
         <%= link_to 'Add some details', [:edit,@project], class: "rounded-lg py-3 px-5 bg-brand text-white block font-medium" %>
       </div>
     </div>
+  <% elsif @project.description.empty? %>
+    Nothing here. Maybe the creator hasn&apos;t added anything yet.
   <% else %>
     <%= @project.description %>
   <% end %>

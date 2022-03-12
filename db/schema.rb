@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_06_222929) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_10_032531) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -66,6 +66,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_06_222929) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["feature_key", "key", "value"], name: "index_flipper_gates_on_feature_key_and_key_and_value", unique: true
+  end
+
+  create_table "project_submissions", force: :cascade do |t|
+    t.string "url"
+    t.bigint "project_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["project_id"], name: "index_project_submissions_on_project_id"
+    t.index ["user_id"], name: "index_project_submissions_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -146,6 +156,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_06_222929) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "project_submissions", "projects"
+  add_foreign_key "project_submissions", "users"
   add_foreign_key "projects", "users", column: "creator_id"
   add_foreign_key "requirements", "projects"
   add_foreign_key "taggings", "tags"

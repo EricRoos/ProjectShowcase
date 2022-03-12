@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
   resources :project_tags
-  get 'project_search/create'
 
   resource :profile
 
@@ -11,6 +10,7 @@ Rails.application.routes.draw do
     end
     resources :requirements, shallow: true
     resources :project_tags 
+    resources :project_submissions, shallow: true
   end
 
   resource :landing_page, only: [:show]
