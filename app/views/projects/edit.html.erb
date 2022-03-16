@@ -1,4 +1,4 @@
-<%= render layout: 'layouts/project' do %>
+<%= render layout: 'layouts/project', locals: { title: 'Edit' } do %>
   <div class='flex flex-col gap-4'>
     <div class="w-full">
       <%= render "form", project: @project %>

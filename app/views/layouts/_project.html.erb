@@ -1,14 +1,14 @@
 <div class="mx-auto md:w-2/3 w-full flex flex-col">
-  <div class="mx-auto w-full">
-    <div class="mx-auto w-full text-sm flex items-center gap-2 text-gray-500">
-      <%= heroicon('arrow-circle-left', class_name: 'h-4') %>
-      <%= link_to 'Back to projects', projects_path, class: "" %>
-    </div>
-    <%= render @project %>
-  </div>
-  <hr class='my-4'/>
-  <div class='flex'>
+  <div class='flex gap-8'>
     <div class='w-1/4 flex flex-col'>
+      <div class="mx-auto w-full">
+        <div class="mx-auto w-full text-sm flex items-center gap-2 text-gray-500">
+          <%= heroicon('arrow-circle-left', class_name: 'h-4') %>
+          <%= link_to 'Back to projects', projects_path, class: "" %>
+        </div>
+        <%= render @project %>
+      </div>
+      <hr class='my-4'/>
       <ul>
         <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
           <%= heroicon('information-circle', class_name: 'h-4') %>
@@ -27,7 +27,7 @@
         <ul>
           <li class='text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
             <%= heroicon('pencil', class_name: 'h-4') %>
-            <%= link_to "Edit Project", [:edit, @project] %>
+            <%= link_to "Edit", [:edit, @project] %>
           </li>
         </ul>
       <% end %>
@@ -35,15 +35,14 @@
         <ul>
           <li class='text-red-500 text-lg hover:text-gray-500 hover:underline gap-2 flex items-center'>
             <%= heroicon('trash', class_name: 'h-4') %>
-            <%= button_to "Delete Project", @project, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' }} %>
+            <%= button_to "Delete", @project, method: :delete, form: { data: { turbo_confirm: 'Are you sure?' }} %>
           </li>
         </ul>
       <% end %>
     </div>
     <div class='w-3/4'>
       <% if (title.present? rescue false) %>
-        <h5 class="text-2xl text-gray-500"><%= title %></h5>
-        <hr class='my-4'/>
+        <h5 class="text-2xl text-gray-500 pb-4"><%= title %></h5>
       <% end %>
       <%= yield %>
     </div>
