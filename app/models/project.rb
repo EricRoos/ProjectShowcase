@@ -8,6 +8,7 @@ class Project < ApplicationRecord
   has_rich_text :description
   has_many_attached :documents
   acts_as_taggable_on :tags
+  has_many :project_submissions
 
   meilisearch do
     attribute :title

@@ -42,3 +42,4 @@ coverage/*
 /config/credentials/production.key
 /vendor/cache/*
 *.key
+

@@ -10,7 +10,11 @@ Rails.application.routes.draw do
     end
     resources :requirements, shallow: true
     resources :project_tags 
-    resources :project_submissions, shallow: true
+    resources :project_submissions do
+      member do
+        patch :transition
+      end
+    end
   end
 
   resource :landing_page, only: [:show]

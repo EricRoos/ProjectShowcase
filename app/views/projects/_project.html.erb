@@ -9,5 +9,18 @@
       <%= like_button(project, current_user) %>
       <%= dislike_button(project, current_user) %>
     </div>
+    <div class='flex items-center gap-2 py-2'>
+      <% user_submission = project.project_submissions.where(user: current_user).first %>
+      <% if user_submission %>
+        <%= form_with(url: [:transition, @project, user_submission], model: user_submission ) do |form| %>
+          <div><%= user_submission.state %></div>
+          <%= form.collection_select :state, user_submission.aasm.events(permitted: true), :name, :default_display_name, {include_blank: true, selected: '' }, data: { controller: 'auto-submit', action: 'auto-submit#change' } %>
+        <% end %>
+      <% else %>
+        <%= form_with(model: [project, ProjectSubmission.new]) do |form| %>
+          <%= styled_submit_button_for(form) %>
+        <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

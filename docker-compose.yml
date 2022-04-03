@@ -1,6 +1,18 @@
 version: '2'
 
 services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    working_dir: /app
+    command: foreman start -f Procfile.dev
+    tty: true
+    volumes:
+      - .:/app
+    ports:
+      - 3000:3000
+      - 35729:35729
   redis:
     image: redis:latest
     ports:

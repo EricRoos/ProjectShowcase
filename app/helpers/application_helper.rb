@@ -5,6 +5,10 @@ module ApplicationHelper
   end
 
   def styled_submit_button_for(form)
-    form.submit class: "rounded-lg py-3 px-5 bg-brand text-white inline-block font-medium cursor-pointer"
+    form.submit class: button_class_name
+  end
+
+  def button_class_name
+    "rounded-lg py-3 px-5 bg-brand text-white inline-block font-medium cursor-pointer"
   end
 end

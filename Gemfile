@@ -101,3 +101,5 @@ gem "acts-as-taggable-on", "~> 9.0"
 gem "acts_as_votable", "~> 0.13.2"
 
 gem "rb-gravatar", "~> 1.0"
+
+gem "aasm", "~> 5.2"

@@ -1,6 +1,6 @@
 class ProjectSubmissionsController < ApplicationController
   before_action :set_project, only: %i[ index create new ]
-  before_action :set_project_submission, only: %i[ show edit update destroy ]
+  before_action :set_project_submission, only: %i[ show edit update destroy transition ]
 
   # GET /project_submissions
   def index
@@ -22,7 +22,7 @@ class ProjectSubmissionsController < ApplicationController
 
   # POST /project_submissions
   def create
-    @project_submission = ProjectSubmission.new(project_submission_params)
+    @project_submission = @project.project_submissions.build(user: current_user)
 
     if @project_submission.save
       redirect_to @project_submission, notice: "Project submission was successfully created."
@@ -34,12 +34,21 @@ class ProjectSubmissionsController < ApplicationController
   # PATCH/PUT /project_submissions/1
   def update
     if @project_submission.update(project_submission_params)
-      redirect_to @project_submission, notice: "Project submission was successfully updated."
+      redirect_to @project_submission.project, notice: "Project submission was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
+  def transition
+    transition_event = params[:project_submission][:state]
+    contains_event = @project_submission.aasm.events(permitted: true).map{|e| e.name}.include?(transition_event.to_sym)
+    if contains_event && @project_submission.aasm.fire!(transition_event)
+      redirect_to @project_submission.project, notice: "Project submission was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
+    end
+  end
   # DELETE /project_submissions/1
   def destroy
     @project_submission.destroy
@@ -58,6 +67,6 @@ class ProjectSubmissionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def project_submission_params
-      params.require(:project_submission).permit(:url).merge(project_id: @project.id, user_id: current_user.id)
+      params.require(:project_submission).permit(:url)
     end
 end

@@ -1,7 +1,15 @@
 require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
-  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+
+
+# Specifying Rack::LiveReload options.
+  #config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+  config.middleware.use(Rack::LiveReload,
+    min_delay: 500,    # default 1000
+    max_delay: 10_000, # default 60_000
+    live_reload_host: '0.0.0.0',  # default localhost
+  )
 
   # Settings specified here will take precedence over those in config/application.rb.
 
