@@ -1,6 +1,6 @@
 class LandingPageController < ApplicationController
   skip_before_action :authenticate_user!
-  before_action :send_to_dashboard, unless: -> { current_user.present? }
+  before_action :send_to_dashboard, if: -> { current_user.present? }
   def show
 
   end
