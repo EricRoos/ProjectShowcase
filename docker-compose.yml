@@ -8,6 +8,9 @@ services:
     working_dir: /app
     command: foreman start -f Procfile.dev
     tty: true
+    environment:
+      - DOCKERIZED=true
+      - DOCKER_HOST_IP=172.19.0.1
     volumes:
       - .:/app
     ports:

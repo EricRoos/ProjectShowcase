@@ -4,7 +4,12 @@ Rails.application.configure do
 
 
 # Specifying Rack::LiveReload options.
-  #config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+  if ENV['DOCKERIZED'] == 'true'
+    config.web_console.whitelisted_ips = ENV['DOCKER_HOST_IP']
+  end
+
+  config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
+
   config.middleware.use(Rack::LiveReload,
     min_delay: 500,    # default 1000
     max_delay: 10_000, # default 60_000
