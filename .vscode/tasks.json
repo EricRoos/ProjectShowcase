@@ -1,0 +1,22 @@
+{
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "rails routes",
+            "type": "shell",
+            "command": "docker-compose run --rm app rails routes"
+        },
+        {
+            "label": "rails console",
+            "type": "shell",
+            "command": "docker-compose run --rm app bundle exec rails c"
+        },
+        {
+            "label": "start dev",
+            "type": "shell",
+            "command": "docker-compose up"
+        }
+    ]
+}

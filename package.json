@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "stimulus-use": "^0.41.0"
+  },
+  "devDependencies": {
+    "@storybook/addon-controls": "^6.4.20",
+    "@storybook/server": "^6.4.20"
   }
 }

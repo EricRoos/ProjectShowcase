@@ -10,7 +10,7 @@ services:
     tty: true
     environment:
       - DOCKERIZED=true
-      - DOCKER_HOST_IP=172.19.0.1
+      - DOCKER_HOST_IP=172.23.0.1
     volumes:
       - .:/app
     ports:

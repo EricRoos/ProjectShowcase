@@ -12,6 +12,10 @@ require "action_mailbox/engine"
 require "action_text/engine"
 require "action_view/railtie"
 require "action_cable/engine"
+require 'view_component'
+require 'view_component/storybook'
+
+
 # require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -20,7 +24,15 @@ Bundler.require(*Rails.groups)
 
 module ProjectShowcase
   class Application < Rails::Application
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', :headers => :any, :methods => [:get, :post, :options]
+      end
+    end
     # Initialize configuration defaults for originally generated Rails version.
+    config.view_component_storybook.stories_path = Rails.root.join("spec/components/stories")
+
     config.load_defaults 7.0
     #config.active_storage.replace_on_assign_to_many = false
 

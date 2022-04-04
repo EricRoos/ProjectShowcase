@@ -2,11 +2,11 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
 
-
+  config.action_controller.asset_host =  'http://localhost:3000'
 # Specifying Rack::LiveReload options.
-  if ENV['DOCKERIZED'] == 'true'
-    config.web_console.whitelisted_ips = ENV['DOCKER_HOST_IP']
-  end
+  #if ENV['DOCKERIZED'] == 'true'
+  #  config.web_console.whitelisted_ips = ENV['DOCKER_HOST_IP']
+  #end
 
   config.middleware.insert_after ActionDispatch::Static, Rack::LiveReload
 

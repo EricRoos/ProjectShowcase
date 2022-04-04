@@ -55,9 +55,11 @@ group :development, :test do
 end
 
 group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
   gem "rack-livereload"
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "web-console"
+  #gem "web-console"
   gem 'guard-livereload', '~> 2.5', require: false
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
@@ -103,3 +105,8 @@ gem "acts_as_votable", "~> 0.13.2"
 gem "rb-gravatar", "~> 1.0"
 
 gem "aasm", "~> 5.2"
+
+
+gem "view_component"
+gem "view_component_storybook"
+gem 'rack-cors', :require => 'rack/cors'
