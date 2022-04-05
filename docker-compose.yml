@@ -11,6 +11,7 @@ services:
     environment:
       - DOCKERIZED=true
       - DOCKER_HOST_IP=172.23.0.1
+      - MEILISEARCH_HOST=http://meilisearch:7700
     volumes:
       - .:/app
     ports:

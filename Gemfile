@@ -110,3 +110,5 @@ gem "aasm", "~> 5.2"
 gem "view_component"
 gem "view_component_storybook"
 gem 'rack-cors', :require => 'rack/cors'
+
+gem "view_component-form", "~> 0.2.3"

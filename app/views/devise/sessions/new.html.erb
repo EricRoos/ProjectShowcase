@@ -4,14 +4,14 @@
     <hr class='my-4' />
     <%= form_for(resource, as: resource_name, url: session_path(resource_name), data: { turbo: false }) do |f| %>
       <div class="my-5">
-        <%= f.label :email %>
-        <%= f.text_field :email, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full", autofocus: true%>
-      </div>
 
-      <div class="my-5">
-        <%= f.label :password %>
-        <%= f.password_field :password, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
-      </div>
+      <%= f.group :email do %>
+        <%= f.text_field :email, autofocus: true%>
+      <% end %>
+
+      <%= f.group :password do %>
+        <%= f.password_field :password %>
+      <% end %>
 
       <% if devise_mapping.rememberable? %>
         <div class="my-5">
@@ -21,7 +21,7 @@
       <% end %>
 
       <div class="my-5">
-        <%= f.submit 'Log in', class: "w-full rounded-lg py-3 px-5 bg-brand text-white inline-block font-medium cursor-pointer" %>
+        <%= f.submit 'Log in' %>
       </div>
     <% end %>
 
