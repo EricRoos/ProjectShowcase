@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
   acts_as_voter
   has_many :projects, foreign_key: :creator_id
+
+  validates_presence_of :username
 end

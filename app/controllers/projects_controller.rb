@@ -4,6 +4,19 @@ class ProjectsController < ApplicationController
   # GET /projects
   def index
     @projects = current_user.projects
+    respond_to do |format|
+      format.html do
+        render_view_template(ViewTemplate::TwoColumnComponent,{
+          side_col: [
+            SideNavComponent.new,
+            NotificationsComponent.new
+          ],
+          main: [ 
+            ActiveProjectsTableComponent.new(projects: @projects, title: 'Projects'),
+          ]
+        })
+      end
+    end
   end
 
   # GET /projects/1

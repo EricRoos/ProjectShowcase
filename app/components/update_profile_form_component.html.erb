@@ -1,0 +1,13 @@
+<turbo-frame id='update_profile_form'>
+  <%= form_with(url: profile_path, model: @user, builder: AppFormBuilder, data: { controller: 'form' }) do |form| %>
+    <%= form.group :email do %>
+      <%= form.text_field :email %>
+    <% end %>
+    <%= form.group :username do %>
+      <%= form.text_field :username %>
+    <% end %>
+    <div class='my-2'>
+      <%= form.submit data: { 'form-target': 'disableOnSubmit' } %>
+    </div>
+  <% end %>
+</turbo-frame>

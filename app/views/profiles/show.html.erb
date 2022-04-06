@@ -9,17 +9,7 @@
         </ul>
       </nav>
       <div class='p-2'>
-        <%= form_with(url: profile_path, model: current_user) do |form| %>
-          <div class='my-2'>
-            <%= styled_form_field_for(form, :email, { disabled: true, name: :email }) %>
-          </div>
-          <div class='my-2'>
-            <%= styled_form_field_for(form, :username) %>
-          </div>
-          <div class='my-2'>
-            <%= styled_submit_button_for(form) %>
-          </div>
-        <% end %>
+        <%= render(UpdateProfileFormComponent.new(user: current_user)) %>
       </div>
     </div>
   </div>

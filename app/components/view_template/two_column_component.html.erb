@@ -1,0 +1,20 @@
+<div class='flex flex-col md:flex-row gap-8'>
+  <div class='flex flex-col w-full md:w-1/5 gap-4'>
+    <% if @side_col.is_a?(Array) %>
+      <% @side_col.each do |item| %>
+        <%= render(item) %>
+      <% end %>
+    <% else %>
+      <%= render(@side_col) %>
+    <% end %>
+  </div>
+  <div class='flex flex-col gap-8 w-full md:w-4/5'>
+    <% if @main.is_a?(Array) %>
+      <% @main.each do |item| %>
+        <%= render(item) %>
+      <% end %>
+    <% else %>
+      <%= render(@main) %>
+    <% end %>
+  </div>
+</div>

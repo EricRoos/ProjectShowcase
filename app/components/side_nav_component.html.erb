@@ -1,0 +1,27 @@
+<div class='flex flex-col bg-gray-100 gap-8 p-8 rounded-xl'>
+  <div class='w-full '>
+    <%= link_to dashboard_path, class: 'flex gap-2 items-center hover:text-brand' do %>
+      <%= heroicon('view-boards', class_name: 'h-4') %> Dashboard 
+    <% end %>
+  </div>
+  <div class='w-full '>
+    <%= link_to projects_path, class: 'flex gap-2 items-center hover:text-brand' do %>
+      <%= heroicon('clipboard-check', class_name: 'h-4') %> Projects 
+    <% end %>
+  </div>
+  <div class='w-full '>
+    <%= link_to profile_path, class: 'flex gap-2 items-center hover:text-brand' do %>
+      <%= heroicon('user', class_name: 'h-4') %> Profile
+    <% end %>
+  </div>
+  <div class='w-full '>
+    <%= link_to new_project_search_path, class: 'flex gap-2 items-center hover:text-brand' do %>
+      <%= heroicon('search', class_name: 'h-4') %> Find a project
+    <% end %>
+  </div>
+  <div class='w-full '>
+    <%= link_to '#', class: 'flex gap-2 items-center hover:text-brand' do %>
+      <%= heroicon('support', class_name: 'h-4') %> Support
+    <% end %>
+  </div>
+</div>
