@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
-  def show
-
+  def edit 
     respond_to do |format|
       format.html do
         render_view_template(ViewTemplate::TwoColumnComponent,{
@@ -17,7 +16,6 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    sleep 5
     current_user.update(profile_params)
     respond_to do |format|
       format.turbo_stream do

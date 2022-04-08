@@ -1,0 +1,7 @@
+<%= render(Atoms::Panel::Component.new) do %>
+  <div class='flex flex-col gap-4'>
+    <% nav_items.each do |nav_item| %>
+      <%= render(nav_item) %>
+    <% end %>
+  </div>
+<% end %>

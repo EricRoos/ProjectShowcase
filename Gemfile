@@ -114,7 +114,6 @@ gem 'rack-cors', :require => 'rack/cors'
 gem "view_component-form", "~> 0.2.3"
 
 gem "cucumber-rails", "~> 2.5", require: false, group: :test
-
 gem "database_cleaner", "~> 2.0", :group => :test
 
 gem "guard-cucumber", "~> 3.0", :group => :development

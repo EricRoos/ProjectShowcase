@@ -6,15 +6,7 @@ class ProjectsController < ApplicationController
     @projects = current_user.projects
     respond_to do |format|
       format.html do
-        render_view_template(ViewTemplate::TwoColumnComponent,{
-          side_col: [
-            SideNavComponent.new,
-            NotificationsComponent.new
-          ],
-          main: [ 
-            ActiveProjectsTableComponent.new(projects: @projects, title: 'Projects'),
-          ]
-        })
+        render Pages::Projects::Index::Component.new(projects: @projects)
       end
     end
   end
