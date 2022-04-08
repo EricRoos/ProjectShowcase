@@ -1,3 +1,15 @@
+Given('a {string} exists') do |class_name|
+  @data ||= {}
+  class_sym = class_name.downcase.gsub(' ', '_').to_sym
+  @data[class_name] = FactoryBot.create(class_sym)
+end
+
+Given('the {string} has the attribute {string} with value of {string}') do |class_name, attribute_name, val|
+  update_hash = {}
+  update_hash[attribute_name] = val
+  @data[class_name].update(update_hash)
+end
+
 Given('the user has a list of {string}') do |class_name|
   @data ||= {}
   class_sym = class_name.singularize.downcase.gsub(' ', '_').to_sym
@@ -86,6 +98,6 @@ end
 
 
 Given('the user sees the {string}') do |data_class|
-  expect{ page.find(id: dom_id(model)) }.to_not raise_error(Capybara::ElementNotFound)
+  #expect{ page.find(id: dom_id(model)) }.to_not raise_error(Capybara::ElementNotFound)
 end
 
