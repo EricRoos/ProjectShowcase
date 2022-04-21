@@ -29,6 +29,7 @@ default: &default
 development:
   <<: *default
   database: project_showcase_development
+  host: <%= ENV.fetch("DB_HOST"){ '0.0.0.0'} %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -63,6 +64,7 @@ development:
 test:
   <<: *default
   database: project_showcase_test
+  host: <%= ENV.fetch("DB_HOST"){ '0.0.0.0' } %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
